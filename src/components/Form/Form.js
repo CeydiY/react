@@ -1,37 +1,30 @@
-import React, { Component} from 'react';
+import { useState} from 'react';
 
-class Form extends Component {
-  state = {
-    nombre: '',
-    apellido: '',
-  };
+const Form = ({enviarFormulario}) => {
+    const [nombre, setNombre] = useState('');
+    const [apellido, setApellido] = useState('');
 
-  gestionarCambio = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
+    const gestionarCambioNombre = (event) => {
+        setNombre([...nombre] = event.target.nombre.value)
+    }
 
-  enviarFormulario = () => {
-    this.props.enviarFormulario(this.state);
-    this.setState({
-      nombre: '',
-      apellido: '',
-    });
-  };
+    const gestionarCambioApellido = (event) => {
+        setApellido([...apellido] = event.target.apellido.value)
+    }
 
-  render() {
-    const { nombre, apellido } = this.state;
+    const enviarDatos = () => {
+        enviarFormulario();
+        setNombre('');
+        setApellido('');
+    }
     return (
       <form>
         <label htmlFor="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" value={nombre} onChange={this.gestionarCambio} />
+        <input type="text" name="nombre" id="nombre" onChange={gestionarCambioNombre} />
         <label htmlFor="apellido">Apellido</label>
-        <input type="text" name="apellido" id="apellido" value={apellido} onChange={this.gestionarCambio} />
-        <input type="button" value="Enviar" onClick={this.enviarFormulario} />
+        <input type="text" name="apellido" id="apellido"  onChange={gestionarCambioApellido} />
+        <input type="button" value="Enviar" onClick={enviarDatos} />
       </form>
     );
-  }
 }
 export default Form;

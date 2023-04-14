@@ -1,38 +1,23 @@
-import React, {Component} from 'react';
+import {useState} from 'react';
 import Tabla from "./components/Tabla/Tabla";
 import Form from "./components/Form/Form";
 
+const App = () => {
+    const {personas, setPersonas} = useState([{nombre: "", apellido: ""}]);
 
-class App extends Component {
-    Form = () => {
-        const {values, setValues} = useState([{nombre: "", apellido: ""}]);
-    };
-     state = {
-         personas: [],
-    };
+    const enviarFormulario = (event) => {
+        setPersonas([...personas, event])
+    }
+    const eliminarPersona = (event) => {
 
-    eliminarPersona = (indice) => {
-        const { personas } = this.state
-        this.setState({
-            personas: personas.filter((personas, i) => {
-                return i !== indice;
-            }),
-        });
     }
-    enviarFormulario = (persona) => {
-        this.setState({ personas: [...this.state.personas, persona]
-        });
-    }
-    render() {
-        const { personas } = this.state;
-        return (
-            <div className="container">
-                <h1>2DAW: Testeando React</h1>
-                <Tabla datosPersonas={personas}
-                       eliminarPersona={this.eliminarPersona} />
-                <Form enviarFormulario={this.enviarFormulario} />
-            </div>
-        )
-    }
+    return (
+        <div className="container">
+            <h1>2DAW: Testeando React</h1>
+            <Tabla datosPersonas={personas}
+                   eliminarPersona={eliminarPersona} />
+            <Form enviarFormulario={enviarFormulario} />
+        </div>
+    )
 }
 export default App;

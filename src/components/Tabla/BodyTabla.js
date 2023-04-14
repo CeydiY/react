@@ -1,5 +1,6 @@
 import React from 'react';
-const BodyTabla = (props) => {
+
+const BodyTabla = React.memo((props) => {
     const filas = props.datosPersonas.map((fila, indice) => {
         return (
             <tr key={indice}>
@@ -10,8 +11,8 @@ const BodyTabla = (props) => {
                         props.eliminarPersona(indice)}>Eliminar</button>
                 </td>
             </tr>
-        )
-    })
+        );
+    });
     return <tbody>{filas}</tbody>
-}
+})
 export default BodyTabla;
