@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Tabla from "./components/Tabla/Tabla";
 import Form from "./components/Form/Form";
 
-const App = () => {
+function App (){
     const {personas, setPersonas} = useState([{nombre: "", apellido: ""}]);
 
     const enviarFormulario = (event) => {
