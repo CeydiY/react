@@ -4,9 +4,9 @@ import Form from "./components/Form/Form";
 
 
 class App extends Component {
-    /*Form = () => {
+    Form = () => {
         const {values, setValues} = useState([{nombre: "", apellido: ""}]);
-    };*/
+    };
      state = {
          personas: [],
     };
