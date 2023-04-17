@@ -1,7 +1,6 @@
-import React from 'react';
-
+import React from "react";
 const BodyTabla = React.memo((props) => {
-    const filas = props.datosPersonas.map((fila, indice) => {
+    /*const filas = props.datosPersonas.map((fila, indice) => {
         return (
             <tr key={indice}>
                 <td>{fila.nombre}</td>
@@ -13,6 +12,6 @@ const BodyTabla = React.memo((props) => {
             </tr>
         );
     });
-    return <tbody>{filas}</tbody>
+    return <tbody>{filas}</tbody>*/
 })
 export default BodyTabla;

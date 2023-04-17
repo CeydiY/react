@@ -3,10 +3,14 @@ import Tabla from "./components/Tabla/Tabla";
 import Form from "./components/Form/Form";
 
 function App (){
-    const {personas, setPersonas} = useState([{nombre: "", apellido: ""}]);
+    const [personas, setPersonas] = useState({
+        nombre: '',
+        apellido: '',
+    });
 
     const enviarFormulario = (event) => {
-        setPersonas([...personas, event])
+        console.log(personas);
+        setPersonas('name', 'value');
     }
     const eliminarPersona = (event) => {
 

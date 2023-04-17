@@ -1,28 +1,25 @@
 import { useState} from 'react';
 
 const Form = ({enviarFormulario}) => {
+    const [persona, setPersona] = useState({
+        nombre: '',
+        apellido: '',
+    });
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
 
-    const gestionarCambioNombre = (event) => {
-        setNombre([...nombre] = event.target.nombre.value)
-    }
 
-    const gestionarCambioApellido = (event) => {
-        setApellido([...apellido] = event.target.apellido.value)
-    }
-
-    const enviarDatos = () => {
+    const enviarDatos = (event) => {
+        event.preventDefault();
+        console.log(persona);
         enviarFormulario();
-        setNombre('');
-        setApellido('');
     }
     return (
       <form>
         <label htmlFor="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" onChange={gestionarCambioNombre} />
+        <input type="text" name="nombre" id="nombre" value={persona.nombre} onChange={(e) => setPersona({...persona, nombre: e.target.value})} />
         <label htmlFor="apellido">Apellido</label>
-        <input type="text" name="apellido" id="apellido"  onChange={gestionarCambioApellido} />
+        <input type="text" name="apellido" id="apellido" value={persona.apellido} onChange={(e) => setPersona({...persona, apellido: e.target.value})} />
         <input type="button" value="Enviar" onClick={enviarDatos} />
       </form>
     );

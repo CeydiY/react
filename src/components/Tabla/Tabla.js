@@ -6,8 +6,7 @@ const Tabla = ({datosPersonas, eliminarPersona}) => {
     return (
         <table className="table">
             <HeadTabla/>
-            <BodyTabla datosPersonas={datosPersonas}
-                       eliminarPersona={eliminarPersona} />
+            <BodyTabla datosPersonas={datosPersonas} eliminarPersona={eliminarPersona} />
         </table>
     );
 }
