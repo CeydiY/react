@@ -1,23 +1,63 @@
-import {useState} from 'react';
-import Tabla from "./components/Tabla/Tabla";
-import Form from "./components/Form/Form";
+import React, { useState, useEffect} from "react";
+import './App.css'
+import  { getBarColor } from'./components/accions/Accions'
 
 function App (){
-    const [personas, setPersonas] = useState([]);
+    const [name, setName] = useState('Tamagotchi Ceydi');
+    const [age, setAge] = useState(0);
+    const [health, setHealth] = useState(100);
+    const [happiness, setHappiness] = useState(100);
+    const [hunger, setHunger] = useState(100);
 
-    const enviarFormulario = (persona) => {
-        setPersonas([...personas, persona]);
+    useEffect(() =>{
+        const interval = setInterval(() => {
+            setAge(age => age + 1);
+            setHunger(hunger => Math.max(0, hunger - 5));
+            setHealth(health => Math.max(0, health - 5));
+            setHappiness(happiness => Math.max(0, happiness - 5));
+        }, 3000)
+        return () => clearInterval(interval);
+    }, []);
 
+    const feed = () => {
+        setHunger(hunger => Math.min(100, hunger + 20));
+        setHealth(health => Math.min(100, health + 5));
+        setHappiness(happiness => Math.min(100, happiness + 5));
+    };
+    const sleep = () => {
+        setHunger(hunger => Math.max(0, hunger - 5));
+        setHappiness(happiness => Math.max(0,happiness - 5));
+        setHealth(health => Math.min(100, health + 10));
     }
-    const eliminarPersona = (indice) => {
-        setPersonas(personas.filter((persona, i) => i !== indice));
-    }
-    return (
+    const play = () => {
+        setHunger(hunger => Math.min(100, hunger + 20));
+        setHealth(health => Math.max(0, health - 5));
+        setHappiness(happiness => Math.min(100, happiness + 5));
+    };
+
+    return(
         <div className="container">
-            <h1>2DAW: Testeando React</h1>
-            <Tabla datosPersonas={personas} eliminarPersona={eliminarPersona} />
-            <Form enviarFormulario={enviarFormulario} />
+            <h1 className="mt-3">{name}</h1>
+            <p><strong>Age: {age}</strong></p>
+            <p>Hunger: <div className="progress-bar" style={{width: `${hunger}%`, backgroundColor: getBarColor(hunger)}}>
+                {hunger}
+            </div></p>
+            <p>Health: <div className="progress-bar" style={{width: `${health}%`, backgroundColor: getBarColor(health)}}>
+                {health}
+            </div></p>
+            <p>Happiness: <div className="progress-bar" style={{width: `${happiness}%`, backgroundColor: getBarColor(happiness)}}>
+                {happiness}
+            </div></p>
+            {health === 0 || happiness === 0 ? (
+                <p>Your Tamagotchi has died.</p>
+            ) : (
+                <>
+                    <button onClick={feed}>Feed</button>
+                    <button onClick={play}>Play</button>
+                    <button onClick={sleep}>Sleep</button>
+                </>
+                )}
         </div>
-    )
+    );
 }
 export default App;
