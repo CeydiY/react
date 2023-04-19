@@ -3,23 +3,19 @@ import Tabla from "./components/Tabla/Tabla";
 import Form from "./components/Form/Form";
 
 function App (){
-    const [personas, setPersonas] = useState({
-        nombre: '',
-        apellido: '',
-    });
+    const [personas, setPersonas] = useState([]);
 
-    const enviarFormulario = (event) => {
-        console.log(personas);
-        setPersonas('name', 'value');
+    const enviarFormulario = (persona) => {
+        setPersonas([...personas, persona]);
+
     }
-    const eliminarPersona = (event) => {
-
+    const eliminarPersona = (indice) => {
+        setPersonas(personas.filter((persona, i) => i !== indice));
     }
     return (
         <div className="container">
             <h1>2DAW: Testeando React</h1>
-            <Tabla datosPersonas={personas}
-                   eliminarPersona={eliminarPersona} />
+            <Tabla datosPersonas={personas} eliminarPersona={eliminarPersona} />
             <Form enviarFormulario={enviarFormulario} />
         </div>
     )
