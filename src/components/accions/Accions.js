@@ -1,6 +1,6 @@
 export function getBarColor(value) {
     if(value > 80){
-        return 'green';
+        return 'mediumseagreen';
     }else if (value > 20){
         return 'yellow';
     }else {

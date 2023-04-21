@@ -39,17 +39,18 @@ function App (){
         <div className="container">
             <h1 className="mt-3">{name}</h1>
             <p><strong>Age: {age}</strong></p>
-            <p>Hunger: <div className="progress-bar" style={{width: `${hunger}%`, backgroundColor: getBarColor(hunger)}}>
+            <p className="states">Hunger: <div className="progress-bar" style={{width: `${hunger}%`, backgroundColor: getBarColor(hunger)}}>
                 {hunger}
             </div></p>
-            <p>Health: <div className="progress-bar" style={{width: `${health}%`, backgroundColor: getBarColor(health)}}>
+            <p className="states">Health: <div className="progress-bar" style={{width: `${health}%`, backgroundColor: getBarColor(health)}}>
                 {health}
             </div></p>
-            <p>Happiness: <div className="progress-bar" style={{width: `${happiness}%`, backgroundColor: getBarColor(happiness)}}>
+            <p className="states">Happiness: <div className="progress-bar" style={{width: `${happiness}%`, backgroundColor: getBarColor(happiness)}}>
                 {happiness}
             </div></p>
             {health === 0 || happiness === 0 ? (
                 <p>Your Tamagotchi has died.</p>
+
             ) : (
                 <>
                     <button onClick={feed}>Feed</button>
