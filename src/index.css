@@ -1,38 +1,11 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
-body{
-  font-family: sans-serif;
-  text-align: center;
-  background-color: lightblue;
-}
-h1{
-  color: deeppink;
-  margin-bottom: 1em;
-}
-p{
-  margin: 10px 0;
-  font-size: 1.5em;
-}
-button{
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 5%;
-  cursor: pointer;
-  margin-top: 2em;
-  margin-left: 1.5em;
-  background-color: violet;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.progress-bar {
-  height: 30px;
-  background: blueviolet;
-  box-shadow: 2px 20px 15px -7px rgba(123, 56, 91, 0.8);
-  border-radius: 50px;
-  transition: all 0.5s;
-  margin-top: .5em;
+*{
+    font-family: 'Noto Serif', serif;
 }
-
-.states{
-  font-style: italic;
-  font-family: "Century Gothic";
-  font-weight: bold;
+.back{
+    background: linear-gradient(27deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 }
